@@ -19,7 +19,7 @@ public class SmoothColorChange : MonoBehaviour {
 			if (_renderer == null) {
 				_renderer = GetComponent<Renderer>();
 			}
-			return renderer;
+			return _renderer;
 		}
 	}
 

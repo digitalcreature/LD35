@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraRig : MonoBehaviour {
+public class CameraRig : SingletonBehaviour<CameraRig> {
 
 	public float moveSmoothing = 10;
 	public float rotationSmoothing = 15;

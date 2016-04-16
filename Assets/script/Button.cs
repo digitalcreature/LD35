@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour {
 
+	public Player.Color color;
 	public Activateable[] activateables;
 
 	public Transform buttonModel;
@@ -34,8 +35,13 @@ public class Button : MonoBehaviour {
 	void OnTriggerEnter() {
 	}
 
-	void OnTriggerStay() {
-		depressed = true;
+	void OnTriggerStay(Collider collider) {
+		if (collider.gameObject == Player.inst.gameObject) {
+			Player player = Player.inst;
+			if (color == Player.Color.White || player.color == color) {
+				depressed = true;
+			}
+		}
 	}
 
 }
