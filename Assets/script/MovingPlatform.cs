@@ -54,9 +54,11 @@ public class MovingPlatform : MonoBehaviour {
 	}
 
 	public void OnDrawGizmos() {
+		Matrix4x4 matrix = Gizmos.matrix;
 		Gizmos.matrix = transform.localToWorldMatrix;
 		Gizmos.color = new Color(1, 1, .7f);
 		Gizmos.DrawWireCube(Vector3.zero, new Vector3(extents.x, 0, extents.y) * 2);
+		Gizmos.matrix = matrix;
 	}
 
 	void Update() {
