@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public interface IActivateable {
+public abstract class Activateable : MonoBehaviour {
 
-	void Activate();
+	public abstract void Activate();
 
 }

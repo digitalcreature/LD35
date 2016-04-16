@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MovingPlatformDestination : MonoBehaviour, IActivateable {
+public class MovingPlatformDestination : Activateable {
 
 	public MovingPlatform platform;
 	public Transform[] pathNodes;
@@ -40,7 +40,7 @@ public class MovingPlatformDestination : MonoBehaviour, IActivateable {
 
 	Direction direction = Direction.Forward;
 
-	public void Activate() {
+	public override void Activate() {
 		if (platform != null && !waiting) {
 			StartCoroutine(MoveCoroutine(direction));
 			direction = direction == Direction.Forward ? Direction.Backward : Direction.Forward;
@@ -81,12 +81,6 @@ public class MovingPlatformDestination : MonoBehaviour, IActivateable {
 					break;
 			}
 			waiting = false;
-		}
-	}
-
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			Activate();
 		}
 	}
 
