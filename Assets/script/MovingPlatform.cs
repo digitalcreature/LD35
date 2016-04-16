@@ -4,7 +4,7 @@ public class MovingPlatform : MonoBehaviour {
 
 	public Vector2 extents = Vector2.one / 2;
 
-	public AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+	AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
 	Vector3 startPostion, targetPosition;
 	float startAngle, targetAngle;
@@ -63,7 +63,8 @@ public class MovingPlatform : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			Move(1, new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Mathf.Repeat(targetAngle + 90, 360));
+			float range = 10f;
+			Move(1, new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range)), Mathf.Repeat(targetAngle + 90, 360));
 		}
 		if (t < 1) {
 			t = t + Time.deltaTime / time;
