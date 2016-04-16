@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MovingPlatform : MonoBehaviour {
 
@@ -29,6 +30,15 @@ public class MovingPlatform : MonoBehaviour {
 
 	IEnumerator MoveRoutine(float time, Vector3 targetPosition, Vector3 targetForward) {
 		isMoving = true;
+		HashSet<Transform> bodies = new HashSet<Transform>();
+		foreach (Transform child in transform) {
+			if (child.GetComponent<Rigidbody>() != null) {
+				bodies.Add(child);
+			}
+		}
+		foreach (Transform body in bodies) {
+			body.SetParent(null, true);
+		}
 		foreach (Collider collider in Physics.OverlapBox(transform.position, new Vector3 (extents.x, 25, extents.y), transform.rotation)) {
 			Rigidbody body = collider.attachedRigidbody;
 			if (body != null && body.transform.parent != transform) {

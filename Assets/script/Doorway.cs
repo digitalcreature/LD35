@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Doorway : MonoBehaviour {
 
@@ -25,6 +26,18 @@ public class Doorway : MonoBehaviour {
 		Bounds bounds = collider.bounds;
 		Gizmos.color = open ? Color.green : Color.red;
 		Gizmos.DrawWireCube(bounds.center, bounds.size);
+	}
+
+}
+
+public static class DoorwayE {
+
+	public static void SetOpen(this IEnumerable<Doorway> doors, bool open) {
+		foreach (Doorway door in doors) {
+			if (door != null) {
+				door.open = open;
+			}
+		}
 	}
 
 }
