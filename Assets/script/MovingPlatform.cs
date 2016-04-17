@@ -35,6 +35,7 @@ public class MovingPlatform : MonoBehaviour {
 		HashSet<Transform> bodies = new HashSet<Transform>();
 		if (source != null) {
 			source.Play();
+			source.time = Random.Range(0f, source.clip.length);
 		}
 		foreach (Transform child in transform) {
 			if (child.GetComponent<Rigidbody>() != null) {
@@ -58,7 +59,7 @@ public class MovingPlatform : MonoBehaviour {
 		float t = 0;
 		while (t < 1) {
 			if (source != null) {
-				source.volume = Mathf.Sin(t * Mathf.PI) * 2;
+				source.volume = Mathf.Sin(t * Mathf.PI);
 			}
 			float curvedt = curve.Evaluate(t);
 			transform.position = Vector3.Lerp(startPosition, targetPosition, curvedt);

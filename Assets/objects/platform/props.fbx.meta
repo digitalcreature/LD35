@@ -13,6 +13,8 @@ ModelImporter:
     100010: column_broken2
     100012: column_broken_top1
     100014: railing
+    100016: railing_broken1
+    100018: railing_broken2
     400000: //RootNode
     400002: beam_long
     400004: column_whole
@@ -21,6 +23,8 @@ ModelImporter:
     400010: column_broken2
     400012: column_broken_top1
     400014: railing
+    400016: railing_broken1
+    400018: railing_broken2
     2300000: //RootNode
     2300002: beam_long
     2300004: column_whole
@@ -29,6 +33,8 @@ ModelImporter:
     2300010: column_broken2
     2300012: column_broken_top1
     2300014: railing
+    2300016: railing_broken1
+    2300018: railing_broken2
     3300000: //RootNode
     3300002: beam_long
     3300004: column_whole
@@ -37,6 +43,8 @@ ModelImporter:
     3300010: column_broken2
     3300012: column_broken_top1
     3300014: railing
+    3300016: railing_broken1
+    3300018: railing_broken2
     4300000: column_whole
     4300002: beam_long
     4300004: beam
@@ -44,6 +52,8 @@ ModelImporter:
     4300008: column_broken2
     4300010: column_broken_top1
     4300012: railing
+    4300014: railing_broken1
+    4300016: railing_broken2
   materials:
     importMaterials: 0
     materialName: 0

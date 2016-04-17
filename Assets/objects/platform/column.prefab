@@ -28,7 +28,7 @@ GameObject:
   - 65: {fileID: 6512824}
   - 114: {fileID: 11405932}
   m_Layer: 0
-  m_Name: whole column
+  m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ac28a84bf3dbf4dbccbc4f51c19e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingDirection: {fileID: 436060}
   opaqueMaterial: {fileID: 0}
   transparentMaterial: {fileID: 2100000, guid: 8b70f8d436721274289f6207b413c961, type: 2}
 --- !u!1001 &100100000

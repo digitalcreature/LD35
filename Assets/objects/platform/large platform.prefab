@@ -63,7 +63,7 @@ GameObject:
   - 65: {fileID: 6596664}
   - 114: {fileID: 11430696}
   m_Layer: 0
-  m_Name: whole column
+  m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ GameObject:
   - 65: {fileID: 6598720}
   - 114: {fileID: 11444134}
   m_Layer: 0
-  m_Name: whole column
+  m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ GameObject:
   - 65: {fileID: 6536070}
   - 114: {fileID: 11414890}
   m_Layer: 0
-  m_Name: whole column
+  m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,6 +212,7 @@ GameObject:
   - 33: {fileID: 3301682}
   - 23: {fileID: 2341230}
   - 114: {fileID: 11417648}
+  - 65: {fileID: 6542946}
   m_Layer: 0
   m_Name: beam
   m_TagString: Untagged
@@ -343,7 +344,7 @@ GameObject:
   - 65: {fileID: 6540288}
   - 114: {fileID: 11416632}
   m_Layer: 0
-  m_Name: whole column
+  m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,6 +395,7 @@ GameObject:
   - 33: {fileID: 3349326}
   - 23: {fileID: 2337780}
   - 114: {fileID: 11412518}
+  - 65: {fileID: 6544352}
   m_Layer: 0
   m_Name: beam
   m_TagString: Untagged
@@ -1347,6 +1349,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9999999, z: 4.091654}
   m_Center: {x: 0, y: 0, z: 2.045827}
+--- !u!65 &6542946
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 1.0000001, z: 2.243131}
+  m_Center: {x: -1.2373623e-13, y: -0.00000006685118, z: 1.1215655}
 --- !u!65 &6543934
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1359,6 +1373,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 8, z: 1}
   m_Center: {x: 0, y: 0, z: -0.5}
+--- !u!65 &6544352
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 1.0000002, z: 2.2431314}
+  m_Center: {x: -2.160599e-13, y: 2.5501446e-13, z: 1.1215652}
 --- !u!65 &6546390
 BoxCollider:
   m_ObjectHideFlags: 1
