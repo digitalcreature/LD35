@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431816}
   m_Layer: 0
-  m_Name: medium room
+  m_Name: large platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
