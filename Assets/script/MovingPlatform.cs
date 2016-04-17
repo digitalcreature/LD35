@@ -11,10 +11,12 @@ public class MovingPlatform : MonoBehaviour {
 	public bool isMoving { get; private set; }
 
 	Doorway[] doors;
+	AudioSource source;
 
 	void Awake() {
 		isMoving = false;
 		doors = GetComponentsInChildren<Doorway>();
+		source = GetComponent<AudioSource>();
 	}
 
 	const float TIME_DEFAULT = 2;
@@ -31,6 +33,10 @@ public class MovingPlatform : MonoBehaviour {
 	IEnumerator MoveRoutine(float time, Vector3 targetPosition, Vector3 targetForward) {
 		isMoving = true;
 		HashSet<Transform> bodies = new HashSet<Transform>();
+		if (source != null) {
+			source.Play();
+			source.time = Random.Range(0f, source.clip.length);
+		}
 		foreach (Transform child in transform) {
 			if (child.GetComponent<Rigidbody>() != null) {
 				bodies.Add(child);
@@ -52,6 +58,9 @@ public class MovingPlatform : MonoBehaviour {
 		Vector3 startForward = transform.forward;
 		float t = 0;
 		while (t < 1) {
+			if (source != null) {
+				source.volume = Mathf.Sin(t * Mathf.PI) * 2;
+			}
 			float curvedt = curve.Evaluate(t);
 			transform.position = Vector3.Lerp(startPosition, targetPosition, curvedt);
 			transform.forward = Vector3.Slerp(startForward, targetForward, curvedt);
@@ -60,6 +69,9 @@ public class MovingPlatform : MonoBehaviour {
 			yield return null;
 		}
 		isMoving = false;
+		if (source != null) {
+			source.Stop();
+		}
 	}
 
 	public void OnDrawGizmos() {

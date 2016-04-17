@@ -12,6 +12,13 @@ public class Button : MonoBehaviour {
 	bool wasDepressed = false;
 	bool depressed = false;
 
+
+	AudioSource source;
+
+	void Awake() {
+		source = GetComponent<AudioSource>();
+	}
+
 	void FixedUpdate() {
 		if (buttonModel != null) {
 			if (depressed) {
@@ -21,10 +28,13 @@ public class Button : MonoBehaviour {
 				buttonModel.transform.localPosition = Vector3.zero;
 			}
 		}
-		if (depressed && ! wasDepressed) {
-			foreach (Activateable activateable in activateables) {
-				if (activateable != null) {
-					activateable.Activate();
+		if (depressed != wasDepressed) {
+			if (depressed) {
+				source.Play();
+				foreach (Activateable activateable in activateables) {
+					if (activateable != null) {
+						activateable.Activate();
+					}
 				}
 			}
 		}
