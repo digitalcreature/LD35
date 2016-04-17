@@ -848,7 +848,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 402078, guid: cd96715271134164ba600b57b5dca53f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 402078, guid: cd96715271134164ba600b57b5dca53f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -856,7 +856,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402078, guid: cd96715271134164ba600b57b5dca53f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -18
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 402078, guid: cd96715271134164ba600b57b5dca53f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1181,6 +1181,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1465818378}
   - 114: {fileID: 1465818379}
+  - 81: {fileID: 1465818380}
   m_Layer: 0
   m_Name: camera rig
   m_TagString: Untagged
@@ -1215,6 +1216,13 @@ MonoBehaviour:
   moveSmoothing: 1
   rotationSmoothing: 8
   target: {fileID: 85991708}
+--- !u!81 &1465818380
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465818377}
+  m_Enabled: 1
 --- !u!1001 &1521731233
 Prefab:
   m_ObjectHideFlags: 0
@@ -1360,6 +1368,14 @@ Prefab:
     - target: {fileID: 11424454, guid: 37d724f696f281b40b83824dc52f4c44, type: 2}
       propertyPath: extents.y
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201116, guid: 37d724f696f281b40b83824dc52f4c44, type: 2}
+      propertyPath: MaxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201116, guid: 37d724f696f281b40b83824dc52f4c44, type: 2}
+      propertyPath: DopplerLevel
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37d724f696f281b40b83824dc52f4c44, type: 2}

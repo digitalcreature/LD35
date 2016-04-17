@@ -11,7 +11,6 @@ GameObject:
   - 54: {fileID: 5450430}
   - 114: {fileID: 11406502}
   - 136: {fileID: 13659030}
-  - 81: {fileID: 8128538}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -105,13 +104,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!81 &8128538
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116610}
-  m_Enabled: 1
 --- !u!95 &9514002
 Animator:
   serializedVersion: 3
