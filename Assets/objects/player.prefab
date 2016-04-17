@@ -57,7 +57,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.70710665, z: 0, w: 0.70710695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   color: 0
-  white: {r: 0.8455882, g: 0.8455882, b: 0.8455882, a: 1}
-  red: {r: 0.7941176, g: 0.23356399, b: 0.23356399, a: 1}
-  green: {r: 0.34439883, g: 0.6691177, b: 0.34439883, a: 1}
-  blue: {r: 0.20544985, g: 0.4283498, b: 0.7352941, a: 1}
-  colorChange: {fileID: 0}
+  white: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 1}
+  red: {r: 0.66176474, g: 0.09731836, b: 0.09731836, a: 1}
+  green: {r: 0.18101212, g: 0.6838235, b: 0.26770365, a: 1}
+  blue: {r: 0.22394033, g: 0.3474123, b: 0.8014706, a: 1}
+  colorChange: {fileID: 11400494}
 --- !u!136 &13659030
 CapsuleCollider:
   m_ObjectHideFlags: 1
