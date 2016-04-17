@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class HideWhenFacingAway : MonoBehaviour {
 
-	Transform facingDirection;
+	public Material opaqueMaterial;
+	public Material transparentMaterial;
 
 	Renderer[] renderers;
 
@@ -12,29 +13,30 @@ public class HideWhenFacingAway : MonoBehaviour {
 	float targetAlpha {
 		get {
 			Vector3 camdir = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
-			return Vector3.Angle(camdir, facingDirection.forward) > 90 ? 1 : .25f;
+			return Vector3.Angle(camdir, transform.up) > 90 ? 1 : .25f;
 		}
 	}
 
 	void Awake() {
 		renderers = GetComponentsInChildren<Renderer>();
-		facingDirection = facingDirection == null ? transform : facingDirection;
 		alpha = targetAlpha;
+		opaqueMaterial = opaqueMaterial == null ? renderers[0].material : opaqueMaterial;
+		transparentMaterial = transparentMaterial == null ? renderers[0].material : transparentMaterial;
 	}
 
 	void Update() {
 		alpha = Mathf.Lerp(alpha, targetAlpha, Time.deltaTime * 10);
 		foreach (Renderer renderer in renderers) {
+			renderer.material = alpha < 0.95f ? transparentMaterial : opaqueMaterial;
 			Color color = renderer.material.color;
 			color.a = alpha;
-			renderer.material.color = color;
+			renderer.material.SetColor("_Color", color);
 		}
 	}
 
 	public void OnDrawGizmos() {
 		Gizmos.color = new Color(.7f, .7f, 1);
-		Transform facingDirection = this.facingDirection == null ? transform : this.facingDirection;
-		Gizmos.DrawRay(transform.position, facingDirection.forward);
+		Gizmos.DrawRay(transform.position, transform.up);
 	}
 
 }
