@@ -42,9 +42,6 @@ public class Button : MonoBehaviour {
 		depressed = false;
 	}
 
-	void OnTriggerEnter() {
-	}
-
 	void OnTriggerStay(Collider collider) {
 		if (collider.gameObject == Player.inst.gameObject) {
 			Player player = Player.inst;
