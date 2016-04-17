@@ -31,7 +31,7 @@ public class MovingPlatform : MonoBehaviour {
 		HashSet<Transform> bodies = new HashSet<Transform>();
 		if (source != null) {
 			source.Play();
-			source.time = Random.Range(0f, source.clip.length);
+			// source.time = Random.Range(0f, source.clip.length);
 		}
 		foreach (Transform child in transform) {
 			if (child.GetComponent<Rigidbody>() != null) {
