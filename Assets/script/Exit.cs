@@ -21,6 +21,9 @@ public class Exit : MonoBehaviour {
 
 	IEnumerator ExitRoutine() {
 		yield return new WaitForSeconds(exitDelay);
+		FadePlane plane = FadePlane.inst;
+		plane.FadeOut();
+		yield return new WaitForSeconds(plane.fadeTime);
 		SceneManager.LoadScene(nextSceneName);
 	}
 

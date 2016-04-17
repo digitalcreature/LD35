@@ -137,6 +137,8 @@ MonoBehaviour:
   playerShrinkSmoothing: 5
   pulseAmplitude: 0.05
   pulseFrequency: 8
+  exitDelay: 1
+  nextSceneName: 
 --- !u!135 &13554568
 SphereCollider:
   m_ObjectHideFlags: 1
