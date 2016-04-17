@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour {
 
 	public Vector2 extents = Vector2.one / 2;
 
-	AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+	static AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
 	public bool isMoving { get; private set; }
 
@@ -35,7 +35,6 @@ public class MovingPlatform : MonoBehaviour {
 		HashSet<Transform> bodies = new HashSet<Transform>();
 		if (source != null) {
 			source.Play();
-			source.time = Random.Range(0f, source.clip.length);
 		}
 		foreach (Transform child in transform) {
 			if (child.GetComponent<Rigidbody>() != null) {

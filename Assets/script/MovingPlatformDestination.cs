@@ -6,15 +6,17 @@ public class MovingPlatformDestination : Activateable {
 
 	public MovingPlatform platform;
 	public Transform[] pathNodes;
+	public RepeatMode repeatMode;
 
 	public Doorway[] startDoors;
 	public Doorway[] endDoors;
 
 	public bool waiting { get; private set; }
 
+	int moveCount;
 	List<Transform> path;
 
-	public enum Direction { Forward, Backward }
+	public enum RepeatMode { NoRepeat, BackAndForth }
 
 	void Awake() {
 		waiting = false;
@@ -24,6 +26,7 @@ public class MovingPlatformDestination : Activateable {
 		start.position = platform.transform.position;
 		start.forward = platform.transform.forward;
 		path.Insert(0, start);
+		moveCount = 0;
 	}
 
 	void BuildPath() {
@@ -38,17 +41,30 @@ public class MovingPlatformDestination : Activateable {
 		BuildPath();
 	}
 
-	Direction direction = Direction.Forward;
+	enum Direction { Forward, Backward }
+	Direction lastDirection = Direction.Forward;
 
 	public override void Activate() {
 		if (platform != null && !waiting) {
+			Direction direction = Direction.Forward;
+			switch (repeatMode) {
+				case RepeatMode.NoRepeat:
+					if (moveCount > 0) return;
+					break;
+				case RepeatMode.BackAndForth:
+					direction = lastDirection;
+					break;
+			}
 			StartCoroutine(MoveCoroutine(direction));
-			direction = direction == Direction.Forward ? Direction.Backward : Direction.Forward;
+			if (repeatMode == RepeatMode.BackAndForth) {
+				lastDirection = lastDirection == Direction.Forward ? Direction.Backward : Direction.Forward;
+			}
 		}
 	}
 
 	IEnumerator MoveCoroutine(Direction direction) {
 		if (platform != null) {
+			moveCount ++;
 			Doorway[] startDoors = null;
 			Doorway[] endDoors = null;
 			waiting = true;

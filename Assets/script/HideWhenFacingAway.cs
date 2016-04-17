@@ -30,7 +30,7 @@ public class HideWhenFacingAway : MonoBehaviour {
 			renderer.material = alpha < 0.95f ? transparentMaterial : opaqueMaterial;
 			Color color = renderer.material.color;
 			color.a = alpha;
-			renderer.material.SetColor("_Color", color);
+			renderer.material.color = color;
 		}
 	}
 
