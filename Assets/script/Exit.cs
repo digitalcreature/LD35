@@ -11,7 +11,11 @@ public class Exit : MonoBehaviour {
 	public float exitDelay = 2;
 	public string nextSceneName;
 
+
+	AudioSource source;
+
 	void Awake() {
+		source = GetComponent<AudioSource>();
 		if (model == null) model = transform;
 	}
 
@@ -20,6 +24,7 @@ public class Exit : MonoBehaviour {
 	}
 
 	IEnumerator ExitRoutine() {
+		source.Play();
 		yield return new WaitForSeconds(exitDelay);
 		FadePlane plane = FadePlane.inst;
 		plane.FadeOut();
