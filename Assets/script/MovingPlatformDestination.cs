@@ -23,11 +23,13 @@ public class MovingPlatformDestination : Activateable {
 	void Awake() {
 		waiting = false;
 		BuildPath();
-		Transform start = new GameObject("start node").transform;
-		start.parent = transform;
-		start.position = platform.transform.position;
-		start.forward = platform.transform.forward;
-		path.Insert(0, start);
+		if (platform != null) {
+			Transform start = new GameObject("start node").transform;
+			start.parent = transform;
+			start.position = platform.transform.position;
+			start.forward = platform.transform.forward;
+			path.Insert(0, start);
+		}
 		moveCount = 0;
 		location = Location.Start;
 	}

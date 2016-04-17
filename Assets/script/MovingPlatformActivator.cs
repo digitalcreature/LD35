@@ -3,10 +3,14 @@ using UnityEngine;
 public class MovingPlatformActivator : Activateable {
 
 	public MovingPlatformDestination.Direction direction;
-	public MovingPlatformDestination destination;
+	public MovingPlatformDestination[] destinations;
 
 	public override void Activate() {
-		destination.Activate(direction);
+		foreach (MovingPlatformDestination destination in destinations) {
+			if (destination != null) {
+				destination.Activate(direction);
+			}
+		}
 	}
 
 }

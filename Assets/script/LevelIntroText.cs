@@ -4,8 +4,10 @@ using System.Collections;
 
 public class LevelIntroText : SingletonBehaviour<LevelIntroText> {
 
-	public Gradient colors;
 	public float duration = 5;
+	public Gradient colors;
+	public Gradient subscriptColors;
+	public Text subscript;
 
 	Text text;
 
@@ -19,6 +21,9 @@ public class LevelIntroText : SingletonBehaviour<LevelIntroText> {
 			t += Time.deltaTime / time;
 			t = Mathf.Clamp01(t);
 			text.color = colors.Evaluate(t);
+			if (subscript != null) {
+				subscript.color = subscriptColors.Evaluate(t);
+			}
 			yield return null;
 		}
 	}

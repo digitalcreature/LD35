@@ -20,14 +20,13 @@ public class MovingPlatform : MonoBehaviour {
 		source = GetComponent<AudioSource>();
 	}
 
-
-	public void Move(Transform target) { Move(target.position, target.forward); }
-	public void Move(Vector3 position) { Move(position, transform.forward); }
-	public void Move( Vector3 position, Vector3 forward) {
-		StartCoroutine(MoveRoutine(moveTime, position, forward));
+	public void Move(Transform target) { Move(target.position, target.rotation); }
+	public void Move(Vector3 position) { Move(position, transform.rotation); }
+	public void Move( Vector3 position, Quaternion rotation) {
+		StartCoroutine(MoveRoutine(moveTime, position, rotation));
 	}
 
-	IEnumerator MoveRoutine(float time, Vector3 targetPosition, Vector3 targetForward) {
+	IEnumerator MoveRoutine(float time, Vector3 targetPosition, Quaternion targetRotation) {
 		isMoving = true;
 		HashSet<Transform> bodies = new HashSet<Transform>();
 		if (source != null) {
@@ -52,7 +51,8 @@ public class MovingPlatform : MonoBehaviour {
 			door.open = false;
 		}
 		Vector3 startPosition = transform.position;
-		Vector3 startForward = transform.forward;
+		Quaternion startRotation = transform.rotation;
+		// Vector3 startForward = transform.forward;
 		float t = 0;
 		while (t < 1) {
 			if (source != null) {
@@ -60,7 +60,8 @@ public class MovingPlatform : MonoBehaviour {
 			}
 			float curvedt = curve.Evaluate(t);
 			transform.position = Vector3.Lerp(startPosition, targetPosition, curvedt);
-			transform.forward = Vector3.Slerp(startForward, targetForward, curvedt);
+			transform.rotation = Quaternion.Slerp(startRotation, targetRotation, curvedt);
+			// transform.forward = Vector3.Slerp(startForward, targetForward, curvedt);
 			t += Time.deltaTime / time;
 			t = Mathf.Clamp01(t);
 			yield return null;

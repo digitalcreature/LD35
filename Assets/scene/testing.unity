@@ -552,6 +552,10 @@ Prefab:
       propertyPath: m_Text
       value: Test Zone Alpha
       objectReference: {fileID: 0}
+    - target: {fileID: 11455138, guid: 97d7d3f6947c1c442b46688ac48b1caa, type: 2}
+      propertyPath: m_Text
+      value: where everything works (hopefully)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97d7d3f6947c1c442b46688ac48b1caa, type: 2}
   m_IsPrefabParent: 0
@@ -656,7 +660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11460124, guid: 488757d0eec721743b6ac652b4bf0dc9, type: 2}
       propertyPath: nextSceneName
-      value: testing
+      value: level1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 488757d0eec721743b6ac652b4bf0dc9, type: 2}
@@ -802,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cedf9b1c43b2841bf23a0185978127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateOnStart: 0
   platform: {fileID: 1727044053}
   pathNodes: []
   startDoors:
@@ -891,6 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cedf9b1c43b2841bf23a0185978127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateOnStart: 0
   platform: {fileID: 913016366}
   pathNodes:
   - {fileID: 1682503423}
@@ -1245,6 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea9a488459618a49b5fa07573fa1777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateOnStart: 0
   direction: 1
   destination: {fileID: 1178040506}
 --- !u!1001 &1411651059
@@ -1593,6 +1600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea9a488459618a49b5fa07573fa1777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateOnStart: 0
   direction: 0
   destination: {fileID: 1178040506}
 --- !u!1001 &1947145036
