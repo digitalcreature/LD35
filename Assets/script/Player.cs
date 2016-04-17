@@ -10,7 +10,7 @@ public class Player : SingletonBehaviour<Player> {
 	public UnityEngine.Color green = UnityEngine.Color.green;
 	public UnityEngine.Color blue = UnityEngine.Color.blue;
 
-	Rigidbody body;
+	public Rigidbody body { get; private set; }
 	Vector3 targetForward;
 	Animator animator;
 
