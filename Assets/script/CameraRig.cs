@@ -10,6 +10,7 @@ public class CameraRig : SingletonBehaviour<CameraRig> {
 
 	void Start() {
 		targetForward = transform.forward;
+		targetForward.y = 0;
 		Snap();
 	}
 
@@ -19,7 +20,11 @@ public class CameraRig : SingletonBehaviour<CameraRig> {
 		if (target != null) {
 			transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * moveSmoothing);
 		}
-		transform.forward = Vector3.Slerp(transform.forward, targetForward, Time.deltaTime * rotationSmoothing);
+		Vector3 forward = transform.forward;
+		forward.y = 0;
+		forward = Vector3.Slerp(forward, targetForward, Time.deltaTime * rotationSmoothing);
+		forward.y = transform.forward.y;
+		transform.forward = forward;
 	}
 
 	public void RotateLeft() {
@@ -34,7 +39,9 @@ public class CameraRig : SingletonBehaviour<CameraRig> {
 		if (target != null) {
 			transform.position = target.position;
 		}
-		transform.forward = targetForward;
+		Vector3 forward = targetForward;
+		forward.y = transform.forward.y;
+		transform.forward = forward;
 	}
 
 }
