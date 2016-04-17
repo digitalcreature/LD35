@@ -27,10 +27,6 @@ public class Player : SingletonBehaviour<Player> {
 		colorChange.Snap();
 	}
 
-	void Start() {
-		FadePlane.inst.FadeIn();
-	}
-
 	void Update() {
 		transform.forward = Vector3.Slerp(transform.forward, targetForward, Time.deltaTime * 15);
 	}

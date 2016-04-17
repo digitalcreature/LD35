@@ -6,7 +6,6 @@ public class MovingPlatformDestination : Activateable {
 
 	public MovingPlatform platform;
 	public Transform[] pathNodes;
-	public RepeatMode repeatMode;
 
 	public Doorway[] startDoors;
 	public Doorway[] endDoors;
@@ -16,7 +15,10 @@ public class MovingPlatformDestination : Activateable {
 	int moveCount;
 	List<Transform> path;
 
-	public enum RepeatMode { NoRepeat, BackAndForth }
+	public enum Location { Start, End }
+	public enum Direction { Forward, Backward }
+
+	public Location location { get; private set; }
 
 	void Awake() {
 		waiting = false;
@@ -27,6 +29,7 @@ public class MovingPlatformDestination : Activateable {
 		start.forward = platform.transform.forward;
 		path.Insert(0, start);
 		moveCount = 0;
+		location = Location.Start;
 	}
 
 	void BuildPath() {
@@ -41,63 +44,65 @@ public class MovingPlatformDestination : Activateable {
 		BuildPath();
 	}
 
-	enum Direction { Forward, Backward }
-	Direction lastDirection = Direction.Forward;
-
 	public override void Activate() {
+		Direction direction = Direction.Forward;
+		switch (location) {
+			case Location.Start:
+				direction = Direction.Forward;
+				break;
+			case Location.End:
+				direction = Direction.Backward;
+				break;
+		}
+		Activate(direction);
+	}
+
+	public void Activate(Direction direction) {
 		if (platform != null && !waiting) {
-			Direction direction = Direction.Forward;
-			switch (repeatMode) {
-				case RepeatMode.NoRepeat:
-					if (moveCount > 0) return;
-					break;
-				case RepeatMode.BackAndForth:
-					direction = lastDirection;
-					break;
-			}
-			StartCoroutine(MoveCoroutine(direction));
-			if (repeatMode == RepeatMode.BackAndForth) {
-				lastDirection = lastDirection == Direction.Forward ? Direction.Backward : Direction.Forward;
+			if
+				((direction == Direction.Forward && location == Location.Start) ||
+				 (direction == Direction.Backward && location == Location.End)) {
+				StartCoroutine(MoveCoroutine(direction));
 			}
 		}
 	}
 
 	IEnumerator MoveCoroutine(Direction direction) {
-		if (platform != null) {
-			moveCount ++;
-			Doorway[] startDoors = null;
-			Doorway[] endDoors = null;
-			waiting = true;
-			switch (direction) {
-				case Direction.Forward:
-					startDoors = this.startDoors;
-					endDoors = this.endDoors;
-					startDoors.SetOpen(false);
-					for (int i = 1; i < path.Count; i ++) {
-						Transform node = path[i];
-						if (node != null) {
-							platform.Move(node);
-							while (platform.isMoving) yield return null;
-						}
+		moveCount ++;
+		Doorway[] startDoors = null;
+		Doorway[] endDoors = null;
+		waiting = true;
+		switch (direction) {
+			case Direction.Forward:
+				startDoors = this.startDoors;
+				endDoors = this.endDoors;
+				startDoors.SetOpen(false);
+				for (int i = 1; i < path.Count; i ++) {
+					Transform node = path[i];
+					if (node != null) {
+						platform.Move(node);
+						while (platform.isMoving) yield return null;
 					}
-					endDoors.SetOpen(true);
-					break;
-				case Direction.Backward:
-					startDoors = this.endDoors;
-					endDoors = this.startDoors;
-					startDoors.SetOpen(false);
-					for (int i = path.Count - 2; i >= 0; i --) {
-						Transform node = path[i];
-						if (node != null) {
-							platform.Move(node);
-							while (platform.isMoving) yield return null;
-						}
+				}
+				endDoors.SetOpen(true);
+				location = Location.End;
+				break;
+			case Direction.Backward:
+				startDoors = this.endDoors;
+				endDoors = this.startDoors;
+				startDoors.SetOpen(false);
+				for (int i = path.Count - 2; i >= 0; i --) {
+					Transform node = path[i];
+					if (node != null) {
+						platform.Move(node);
+						while (platform.isMoving) yield return null;
 					}
-					endDoors.SetOpen(true);
-					break;
-			}
-			waiting = false;
+				}
+				endDoors.SetOpen(true);
+				location = Location.Start;
+				break;
 		}
+		waiting = false;
 	}
 
 	public void OnDrawGizmos() {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MovingPlatform : MonoBehaviour {
 
 	public Vector2 extents = Vector2.one / 2;
+	public float moveTime = 2;
 
 	static AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
@@ -19,15 +20,11 @@ public class MovingPlatform : MonoBehaviour {
 		source = GetComponent<AudioSource>();
 	}
 
-	const float TIME_DEFAULT = 2;
 
-	public void Move(Transform target) { Move(TIME_DEFAULT, target.position, target.forward); }
-	public void Move(float time, Transform target) { Move(time, target.position, target.forward); }
+	public void Move(Transform target) { Move(target.position, target.forward); }
 	public void Move(Vector3 position) { Move(position, transform.forward); }
-	public void Move(Vector3 position, Vector3 forward) { Move(TIME_DEFAULT, position, forward); }
-	public void Move(float time, Vector3 position) { Move(time, position, transform.forward); }
-	public void Move(float time, Vector3 position, Vector3 forward) {
-		StartCoroutine(MoveRoutine(time, position, forward));
+	public void Move( Vector3 position, Vector3 forward) {
+		StartCoroutine(MoveRoutine(moveTime, position, forward));
 	}
 
 	IEnumerator MoveRoutine(float time, Vector3 targetPosition, Vector3 targetForward) {
