@@ -78,7 +78,7 @@ public class MovingPlatformDestination : Activateable {
 			case Direction.Forward:
 				startDoors = this.startDoors;
 				endDoors = this.endDoors;
-				startDoors.SetOpen(false);
+				// startDoors.SetOpen(false);
 				for (int i = 1; i < path.Count; i ++) {
 					Transform node = path[i];
 					if (node != null) {
@@ -86,13 +86,13 @@ public class MovingPlatformDestination : Activateable {
 						while (platform.isMoving) yield return null;
 					}
 				}
-				endDoors.SetOpen(true);
+				// endDoors.SetOpen(true);
 				location = Location.End;
 				break;
 			case Direction.Backward:
 				startDoors = this.endDoors;
 				endDoors = this.startDoors;
-				startDoors.SetOpen(false);
+				// startDoors.SetOpen(false);
 				for (int i = path.Count - 2; i >= 0; i --) {
 					Transform node = path[i];
 					if (node != null) {
@@ -100,7 +100,7 @@ public class MovingPlatformDestination : Activateable {
 						while (platform.isMoving) yield return null;
 					}
 				}
-				endDoors.SetOpen(true);
+				// endDoors.SetOpen(true);
 				location = Location.Start;
 				break;
 		}

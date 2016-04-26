@@ -48,7 +48,7 @@ public class MovingPlatform : MonoBehaviour {
 			}
 		}
 		foreach (Doorway door in doors) {
-			door.open = false;
+			door.UpdateOpen(false);
 		}
 		Vector3 startPosition = transform.position;
 		Quaternion startRotation = transform.rotation;
@@ -67,6 +67,9 @@ public class MovingPlatform : MonoBehaviour {
 			yield return null;
 		}
 		isMoving = false;
+		foreach (Doorway door in doors) {
+			door.UpdateOpen(true);
+		}
 		if (source != null) {
 			source.Stop();
 		}

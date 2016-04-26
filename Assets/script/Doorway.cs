@@ -28,6 +28,21 @@ public class Doorway : MonoBehaviour {
 		Gizmos.DrawWireCube(bounds.center, bounds.size);
 	}
 
+	public void UpdateOpen(bool open) {
+		float checkDistance = 1f;
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position, transform.forward, out hit, checkDistance, LayerMask.GetMask("Doorway"), QueryTriggerInteraction.Collide)) {
+			Doorway other = hit.collider.GetComponent<Doorway>();
+			if (other != null) {
+				other.open = open;
+				this.open = open;
+			}
+		}
+		else {
+			this.open = false;
+		}
+	}
+
 }
 
 public static class DoorwayE {

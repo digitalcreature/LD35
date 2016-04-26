@@ -939,7 +939,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11455138, guid: 97d7d3f6947c1c442b46688ac48b1caa, type: 2}
       propertyPath: m_Text
-      value: a game by tgrehawi for ludum dare 35
+      value: a game by tgrehawi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97d7d3f6947c1c442b46688ac48b1caa, type: 2}
